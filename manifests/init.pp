@@ -28,11 +28,22 @@ class ngrok (
   String  $service_state                    = 'running',
   String  $service_tunnels                  = '--all',
 
+  # Parameter to manage unzip which is required by the archive resource.
+  Boolean $manage_unzip                     = false,
+
 ) {
 
   # Let's make sure ..
   if ( $::kernel != 'Linux' ) {
     fail("The ngrok module does not yet work on ${::operatingsystem}")
+  }
+
+  # puppet-ngrok requires the package unzip
+  if ( $manage_unzip ) {
+    package { 'unzip':
+      ensure => installed,
+      before => Archive['/tmp/ngrok.zip'],
+    }
   }
 
   # Download the package and uncompress it into a bin directory.
