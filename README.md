@@ -7,10 +7,10 @@ In other words, including the class and declaring a single ngrok::tunnel resourc
 
 Class and defined type parameters match the ones you'll find in the config file, so for the most part, declaring these matches what you've been typing on the command line or in a config file.
 
-Once ngrok is running, you can verify which tunnels are running with a `curl` command.
+Once ngrok is running, you can verify which tunnels are running by using the included `ngrok` fact.
 
 ```
-curl http://localhost:4040/api/tunnels
+facter -p ngrok
 ```
 
 

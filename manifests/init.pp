@@ -30,7 +30,6 @@ class ngrok (
 
   # Parameter to manage unzip which is required by the archive resource.
   Boolean $manage_unzip                     = false,
-
 ) {
 
   # Let's make sure ..
