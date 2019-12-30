@@ -63,15 +63,22 @@ class { 'ngrok':
 }
 ngrok::tunnel { 'web':
   proto => 'http',
-  port  => '80',
+  addr  => '80',
 }
+```
+
+## Tunnel to another machine
+
+ngrok lets you use one machine to create a tunnel to another machine.  To do that, specify a hostname in front of the port number.
+
+```puppet
 ngrok::tunnel { 'app':
   proto => 'http',
-  port  => 'app.mine.nat:8080',
+  addr  => 'some.other.host.local:8080',
 }
 ngrok::tunnel { 'ssh':
   proto => 'tcp',
-  port  => 'bastion.mine.nat:22',
+  addr  => 'secret.bastion.local:22',
 }
 ```
 

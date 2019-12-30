@@ -1,6 +1,6 @@
 {
   "name": "gabe-ngrok",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Gabriel M Schuyler",
   "summary": "Installs and configures ngrok binary and tunnels",
   "license": "Apache-2.0",
@@ -26,14 +26,16 @@
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
@@ -48,7 +50,8 @@
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "14.04",
-        "16.04"
+        "16.04",
+        "18.04"
       ]
     }
   ],
