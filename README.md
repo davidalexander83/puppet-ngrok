@@ -109,6 +109,10 @@ If we're managing the service, what state should it be in.  Default: `running`
 
 When activating the service, this string is tacked on to the command, to instruct ngrok which tunnels to automatically enable at that time.  The default is '-all'.  Note that if you don't declare any `ngrok::tunnel` resources, you will need to set this to '--none' as ngrok will error out if there are no tunnels defined and you say '--all'.  It can also take a space-separated list of tunnel names to start.  Remember, you will need an auth token (login to ngrok.com to see it) if you want to run tcp tunnels.
 
+#### `manage_unzip`
+
+Optionally, ensure that the unzip package is installed.  Default: `false`
+
 #### Other paramters
 
 The ngrok class also exposes parameters for each possible main configuration options.  A detailed list of those options is available on the ngrok.com site itself at:  https://ngrok.com/docs#config-options
@@ -133,5 +137,3 @@ This fact lists the active tunnels, as reported by the API.
 This module doesn't try to save you from invalid configurations.  For instance, it's possible to omit your auth token, and then try to run some tcp tunnels, which fail without an auth token.  Puppet does not know about this situation, and will quietly try to start the service on every run.
 
 If you see the runs starting the service on every try, but the service isn't actually running, try to start ngrok by hand to see what's going on.
-
-I'm putting it down as a 'to-do' item to write some clever facts.  Things like the 'tunnels' API end point expose some information that could be useful as facts.  It's the confinement of the fact that gets tricky.
