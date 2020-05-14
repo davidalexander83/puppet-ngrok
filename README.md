@@ -53,6 +53,16 @@ class { 'ngrok':
 }
 ```
 
+## Get rid of old configuration files if ngrok is already installed
+
+If ngrok is already installed, older configuration files may be defined at /home/username/.ngrok2/ngrok.yml. You can use $manage_all_configs to remove these old configurations as they may apply prior to any configuration set by Puppet (the default is false and will leave these files intact).
+
+```puppet
+class { 'ngrok':
+  manage_all_configs => true,
+}
+```
+
 ## Start ngrok, but don't start tunnels
 
 You might want to define a bunch of tunnels, and have ngrok running, but not have it automatically start any of those tunnels.  Use the `service_tunnels` parameter to instruct ngrok to not automatically enable any tunnels.

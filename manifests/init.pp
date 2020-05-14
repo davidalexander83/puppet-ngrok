@@ -52,7 +52,7 @@ class ngrok (
   if ( $manage_all_configs ) {
     tidy { 'old ngrok configs':
       path    => '/home',
-      matches => [ 'ngrok.yml', 'ngrok.yaml'],
+      matches => 'ngrok.yml',
       recurse => true,
     }
   }
