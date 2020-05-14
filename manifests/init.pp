@@ -30,6 +30,9 @@ class ngrok (
 
   # Parameter to manage unzip which is required by the archive resource.
   Boolean $manage_unzip                     = false,
+
+  # Parameter to manage existing configuration files, as these may interfere with this module
+  Boolean $manage_all_configs               = false,
 ) {
 
   # Let's make sure ..
@@ -42,6 +45,15 @@ class ngrok (
     package { 'unzip':
       ensure => installed,
       before => Archive['/tmp/ngrok.zip'],
+    }
+  }
+
+  # Remove existing ngrok configurations if they exist
+  if ( $manage_all_configs ) {
+    tidy { 'old ngrok configs':
+      path    => '/home',
+      matches => [ 'ngrok.yml', 'ngrok.yaml'],
+      recurse => true,
     }
   }
 
